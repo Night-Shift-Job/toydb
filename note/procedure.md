@@ -7,7 +7,9 @@
 
 ## Lexer
 parser直接调用了Lexer产生的迭代器，将query str传入Lexer中，转换为内部变量（token）。
-Lexer是一个peekable的Char迭代器。（生命周期？）
+Lexer是一个peekable的Char迭代器。（生命周期？）.
+值得注意的是aggregate function没有被作为keyword，而是直接转化成了function expr。
+lexer核心是scan方法，peek match之后调用子scan方法，内部就是一般的dfs。
 
 
 ## Parser
@@ -50,3 +52,6 @@ CREATE TABLE genres (
   ]
 }
 ```
+
+## 入口2
+回到一开始的入口，对于事务操作（begin，commit，rollback等），调用对应的事务方法；对于读写操作，绑定已有事务或新建事务并调用plan.optimize.execute。
