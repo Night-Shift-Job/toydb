@@ -33,7 +33,7 @@ Parser是top-down的，每一个字句都是一个 statement + ';'
 - ---> next_ident: consume ident and save name
 - ---> consume OpenParen
 - ---> loop till comma, parse column and push into column vec
-- -----> column 直接就是ast了，保存名称、类型，通过布尔值设置基本属性
+- -----> column 直接就是ast了，保存名称、类型，通过布尔值或者设置基本属性
 ```sql
 CREATE TABLE genres (
         id INTEGER PRIMARY KEY,
@@ -42,12 +42,11 @@ CREATE TABLE genres (
 ```
 被转换成了
 ```json
-Ok(CreateTable
-{
+CreateTable:{
   name: "genres",
   columns: [
     Column { name: "id", datatype: Integer, primary_key: true, nullable: None, default: None, unique: false, index: false, references: None },
     Column { name: "name", datatype: String, primary_key: false, nullable: Some(false), default: None, unique: false, index: false, references: None }
   ]
-})
+}
 ```
