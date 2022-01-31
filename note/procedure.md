@@ -45,8 +45,8 @@ CREATE TABLE genres (
 "CreateTable":{
   "name": "genres",
   "columns": [
-    "Column": { name: "id", datatype: Integer, primary_key: true, nullable: None, default: None, unique: false, index: false, references: None },
-    "Column": { name: "name", datatype: String, primary_key: false, nullable: Some(false), default: None, unique: false, index: false, references: None }
+    "Column": { "name": "id", "datatype": Integer, primary_key: true, nullable: None, default: None, unique: false, index: false, references: None },
+    "Column": { "name": "name", "datatype": String, primary_key: false, nullable: Some(false), default: None, unique: false, index: false, references: None }
   ]
 }
 ```
