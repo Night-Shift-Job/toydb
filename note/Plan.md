@@ -16,3 +16,9 @@ Parser将Select的几个字句（where、groupby等）直接放在了Select stat
 - `build_from_clause`: 添加对应的scope，将table压入scope的kv中，并不断调用`build_from_item`产生Node树（向右增扩）。  
 - -->`build_from_item`:1）若节点是table，叶子为`Node::Scan`节点；2）产生如果字句是Join的话，递归向下。获得left和right node后，生成一个`Node:: NestedLoopJoin`节点；
 同时通过`build_expression`,自顶向下构造predicate
+
+### Where
+add predicate in where into node
+
+### Select
+Inject_hidden expr, add new columns and for planner tree.
